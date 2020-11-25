@@ -11,7 +11,7 @@
 ## Installing
 
 ```shell
-$ composer require imactool/gjpzyx -vvv
+$ composer require imactool/gjpzyx:dev-main -vvv
 ```
 
 具体索要参数和返回参数请按产品文档查阅
