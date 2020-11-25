@@ -1,0 +1,19 @@
+{
+    "name": "imactool\/gjpzyx",
+    "description": "管家婆ERP 管家婆章鱼侠API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "iMactool",
+            "email": "chinauser1208@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Imactool\\Gjpzyx\\": "src/"
+        }
+    }
+}
