@@ -7,6 +7,7 @@
 应该是目前第一个比较完善的支持 管家婆 ERP、章鱼侠 ERP 的第三方扩展包了。
 使用本扩展之前，请务必确认你已经在 [管家婆-章鱼侠](http://help.mygjp.com/pages/viewpage.action?pageId=48660739) 获取了接口调用权限！
 
+[![Latest Unstable Version](https://poser.pugx.org/imactool/gjpzyx/v/unstable)](//packagist.org/packages/imactool/gjpzyx) [![License](https://poser.pugx.org/imactool/gjpzyx/license)](//packagist.org/packages/imactool/gjpzyx) [![Total Downloads](https://poser.pugx.org/imactool/gjpzyx/downloads)](//packagist.org/packages/imactool/gjpzyx) [![.gitattributes](https://poser.pugx.org/imactool/gjpzyx/gitattributes)](//packagist.org/packages/imactool/gjpzyx)
 
 ## Installing
 
