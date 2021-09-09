@@ -10,7 +10,7 @@ namespace Imactool\Gjpzyx;
 
 class Aes
 {
-    protected $iv = '000000000000000000'; //密钥偏移量IV，可自定义
+    protected $iv = '1200kds000001233fd'; //密钥偏移量IV，可自定义
     protected $encryptKey = '7e4e615af165fe63cbf40e52abbc79e8';//AESkey，可自定义
 
     /**
@@ -32,8 +32,8 @@ class Aes
     //加密
     public function encrypt($encryptStr){
         error_reporting(E_ALL & ~E_DEPRECATED); //兼容管家婆使用过时 ASE 加密方式
-        $localIV = $this->iv;
-        $encryptKey = $this->encryptKey;
+        $localIV = trim($this->iv);
+        $encryptKey = trim($this->encryptKey);
         $encryptStr = trim($encryptStr);
         $module = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, $localIV);
         mcrypt_generic_init($module, $encryptKey, $localIV);
@@ -49,11 +49,11 @@ class Aes
     //解密
     public function decrypt($encryptStr) {
         error_reporting(E_ALL & ~E_DEPRECATED); //兼容管家婆使用过时 ASE 加密方式
-        $localIV = $this->iv;
-        $encryptKey = $this->encryptKey;
+        $localIV = trim($this->iv);
+        $encryptKey = trim($this->encryptKey);
         $module = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, $localIV);
         mcrypt_generic_init($module, $encryptKey, $localIV);
-        $encryptedData = base64_decode($encryptStr);
+        $encryptedData = base64_decode(trim($encryptStr));
         $encryptedData = mdecrypt_generic($module, $encryptedData);
         return $encryptedData;
     }

@@ -2,6 +2,11 @@
     "name": "imactool\/gjpzyx",
     "description": "管家婆ERP 管家婆章鱼侠API",
     "license": "MIT",
+    "keywords": [
+        "管家婆ERP open api",
+        "管家婆章鱼侠API",
+        "php sdk"
+    ],
     "authors": [
         {
             "name": "iMactool",
@@ -9,7 +14,7 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^6.5"
+        "guzzlehttp/guzzle": "^6.5|^7.0.1"
     },
     "autoload": {
         "psr-4": {
