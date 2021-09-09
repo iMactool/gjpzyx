@@ -111,8 +111,59 @@ $refundOrder = [
 $result = $app->pushOrderRefund($refundOrder);
 
 ```
-    
-其他具体可以查看代码
+
+## 管家婆API 列表
+
+### 商品管理
+- pushProduct() 宝贝上载 
+- queryProduct() 商品详情查询 
+
+### 订单交易
+- pushOrder() 订单批量上载/更新接口
+- queryOrderStatus() 查询订单处理状态
+- querySaleOrder() 订单查询
+
+### 售后场景
+- pushOrderRefund() 售后单上载
+- queryOrderRefund() 售后详情查询
+
+### 库存管理
+- queryQtyInfo() 仓库详情查询
+- querySaleQty() 商品库存查询
+- queryMoreSaleQty() 批量库存查询
+
+### 全渠道场景/门店
+- pushStoreInfo() 门店信息上载
+
+---- 
+
+分割线： 目前由于章鱼侠相关的测试接口无法正常使用。暂不支持。管家婆相关接口正常
+
+---- 
+
+##章鱼侠 API 列表
+
+### 商品管理
+- pushProduct() 宝贝上载
+- queryProduct() 商品详情查询
+
+### 订单交易
+- pushOrder() 订单批量上载/更新接口
+- queryOrderStatus() 查询订单处理状态
+- querySaleOrder() 订单查询
+
+### 售后场景
+- pushOrderRefund() 售后单上载
+- queryOrderRefund() 售后详情查询
+
+### 库存管理
+- queryQtyInfo() 仓库详情查询
+- querySaleQty() 商品库存查询
+- queryMoreSaleQty() 批量库存查询
+
+### 全渠道场景/门店
+- pushStoreInfo() 门店信息上载
+
 
 TODO
 

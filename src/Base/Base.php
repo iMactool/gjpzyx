@@ -22,7 +22,7 @@ class Base extends GjpzyxClass
     }
 
     /**
-     * 接口获取授权认证码
+     * 接口获取授权认证码 [废弃]
      * @return mixed
      * @throws HttpException
      */
@@ -58,20 +58,20 @@ class Base extends GjpzyxClass
     }
 
     /**
+     * 步骤2 利用授权认证码获取token信息
      * 接口获取授权认证码 token
+     * @param string $auth_code
      * @return array|mixed
      * @throws HttpException
+     * @author cc
      */
-    public function getTokenInfo()
+    public function getTokenInfo(string $auth_code)
     {
-        $code = $this->getAuthCode();
-        if (is_array($code)){
-            return ['code'=>$code['errorcode'],'msg'=>$code['errormessage'].'，requestid : '.$code['requestid']];
-        }
+
         $params = [
             'TimeStamp'=>date('Y-m-d H:i:s'),
             'GrantType'=>'auth_token',
-            'AuthParam'=>trim($code)
+            'AuthParam'=>trim($auth_code)
         ];
         $param = $this->makeSecretData($params);
 
@@ -86,26 +86,11 @@ class Base extends GjpzyxClass
             if ($result['iserror']){
                 return ['code'=>$result['errorcode'],'msg'=>$result['errormessage'].'，requestid : '.$result['requestid']];
             }
-
-            $response = $result['response']['response'];
-
+            $response = rtrim($result['response']['response']);
             $tokenInfo = $this->aesFace()->decrypt($response);
+            $tokenInfo = rtrim($tokenInfo);
 
-            /**
-             * 返回解析之后的结果
-            array (size=8)
-            'appkey' => string '68831364318015642713205516431221' (length=32)
-            'auth_token' => string 'hDFhehHplEYslTsIUPSPODIHhKdqNXJrsGz0Mn14' (length=40)
-            'profileid' => string '515867705654726157' (length=18)
-            'employee_id' => string '515867705767072864' (length=18)
-            'expires_in' => float 864000
-            'refresh_token' => string 'QErAUm3YsfMUA4VPvA6eMY9KUFThlCOJWvyVmltr' (length=40)
-            're_expires_in' => float 15552000
-            'timestamp' => string '2020/11/17 16:52:07' (length=19)
-             * 调用授权接口授权获得的token有效期是10天，token过期前可以调用token刷新接口进行接口刷新操作。
-             * 刷新token时不需要登录erp系统，刷新token最多可用180天。然后就必须使用使用授权接口登录erp进行授权
-             */
-            return  json_decode($tokenInfo,true);
+            return  \json_decode($tokenInfo,true);
         }catch (\Exception $e){
             throw new HttpException($e->getMessage(),$e->getCode(),$e);
         }
@@ -147,6 +132,7 @@ class Base extends GjpzyxClass
     }
 
     /**
+     * 步骤1 获取授权认证码
      * 站点登录获取授权认证码
      * 组装授权登录参数，访问授权登录地址，输入erp账号,认证成功后 ，在回调地址返回auth_code
      * @param $redirect_url 授权成功后跳转的地址,主域名必须和申请应用时的主域名一致
@@ -223,6 +209,7 @@ class Base extends GjpzyxClass
         $post = array_merge($post,$params);
         return $this->httpRequest($post);
     }
+
 
     //---------------------------------------------------
     // 库存 start
