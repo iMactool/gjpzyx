@@ -120,7 +120,7 @@ class Factory
             'appKey' 	=> '68943923115886070418838901844741',
             'appSecret' => 'ONxYDyNaCoyTzsp83JoQ3YYuMPHxk3j7',
             'signKey'   => 'lezitiancheng',
-            'token'		=> '0I7dHCByoGxlxAHU8I50MzpPVbN0Nl56goE2YGdP',
+            'token'		=> 'mMwbS4x1jMTyiw4wiuD1mDDm1yuOcATiMyQ9vGp7',
             'shopKey'	=> '2345678sdfg',
             //公司名称
             'CompanyName'=>'TestMall',
@@ -128,10 +128,11 @@ class Factory
             'UserId'	=> 'test',
             //密码
             'Password'	=> 'grasp@101',
-            'refreshToken' => '548BGezYm6wfTCzeazuk0d0UeR39AUMYJAJv3pGH',
+            'refreshToken' => 'RAM5VwheS4RWFkApJzxDtjC4GzPWa7C4FRgNr175',
             //线上登录获取授权认证码的地址
-            'loginUrl'=>'http://ca.mygjp.com:666/account/login?',
-            'apiUrl'=>'http://ca.mygjp.com:8002/api/',
+            'loginUrl'=>'http://d7.mygjp.com.cn:666/account/login?',
+            //线上接口调用的地址
+            'apiUrl'=>'http://d7.mygjp.com.cn:8002/api',
             //线上章鱼侠云erp登录地址
             'onlineLoginUrl'=>'http://login.zhangyuxia.com.cn'
         ];

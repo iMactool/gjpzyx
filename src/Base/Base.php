@@ -82,15 +82,14 @@ class Base extends GjpzyxClass
 
         try {
             $result = (new Http())->setApiUrl($this->config['apiUrl'])->httpPost($postData,'token');
-
             if ($result['iserror']){
                 return ['code'=>$result['errorcode'],'msg'=>$result['errormessage'].'，requestid : '.$result['requestid']];
             }
-            $response = rtrim($result['response']['response']);
+            $response = trim($result['response']['response']);
             $tokenInfo = $this->aesFace()->decrypt($response);
-            $tokenInfo = rtrim($tokenInfo);
-
-            return  \json_decode($tokenInfo,true);
+            $tokenInfo = trim($tokenInfo);
+            preg_match('/^\{("\w+":"(.*?)",?)+\}/', $tokenInfo,$match);
+            return  \json_decode($match[0],true);
         }catch (\Exception $e){
             throw new HttpException($e->getMessage(),$e->getCode(),$e);
         }
@@ -103,7 +102,7 @@ class Base extends GjpzyxClass
      * @return array|mixed
      * @throws HttpException
      */
-    public function refreshToken($refresh_token){
+    public function refreshToken(string $refresh_token){
 
         $params = [
             'TimeStamp'=>date('Y-m-d H:i:s'),
@@ -123,9 +122,10 @@ class Base extends GjpzyxClass
             if ($result['iserror']){
                 return ['code'=>$result['errorcode'],'msg'=>$result['errormessage'].'，requestid : '.$result['requestid']];
             }
-            $response = $result['response']['response'];
+            $response = trim($result['response']['response']);
             $tokenInfo = $this->aesFace()->decrypt($response);
-            return  json_decode($tokenInfo,true);
+            preg_match('/^\{("\w+":"(.*?)",?)+\}/', $tokenInfo,$match);
+            return  \json_decode($match[0],true);
         }catch (\Exception $e){
             throw new HttpException($e->getMessage(),$e->getCode(),$e);
         }
