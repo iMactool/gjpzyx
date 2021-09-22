@@ -6,6 +6,11 @@
 ### 注意📢
 > 管家婆和章鱼侠接口调用方式基本一致，他们两的区别在于申请的 `appkey` 不一样
 
+### install
+
+```
+composer require imactool/gjpzyx
+```
 
 # 管家婆
 ```php
